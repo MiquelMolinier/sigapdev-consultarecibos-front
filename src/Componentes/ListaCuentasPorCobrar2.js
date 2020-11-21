@@ -12,15 +12,17 @@ class ListaCuentasPorCobrar2 extends Component{
     constructor(props){
         super(props)
         this.state={
-            correoEnvio:'UPG.FISI@unmsm.edu.pe',
+            correoEnvio:'upg.fisi@unmsm.edu.pe',
             mostrarModal:false,
             filasSelec:[],
             notificacionCorre:{},
             numNotifi: 0,
             numCorrelativo:0, //este es el numero con el que se empieza
-            asuntoEnvio:'UPG - NOTIFICACION DEUDA  N°',
+            //asuntoEnvio:'UPG - NOTIFICACION DEUDA  N°',
+            asuntoEnvio:'UPG - ESTADO DE PAGOS  N°',
             descripcionEnvio: '',
-            footerEnvio:'*Una vez realizado el pago debe entregar el recibo en la Oficina de la Unidad de Posgrado. \n \n \n Atte,Unidad de Posgrado',
+            //footerEnvio:'*Una vez realizado el pago debe entregar el recibo en la Oficina de la Unidad de Posgrado. \n \n \n Atte,Unidad de Posgrado',
+            footerEnvio:'*Una vez realizado el depósito debe registrarlo en el formulario electrónico: https://bit.ly/35fp6SW. \n \n \n Atte, Unidad de Posgrado',
             fechaEnvio:'',
 
             agregarDias:0,
@@ -33,11 +35,14 @@ class ListaCuentasPorCobrar2 extends Component{
     componentWillMount =() =>{
         this.recogerNotificacionCorrelativos();
         let aumentarDias=0;
-        const mensajeAntesFecha = 'Previo cordial saludo, le informamos que mantiene deuda pendiente de pago a la Unidad de Posgrado de la Facultad de Ingeniería de Sistemas e Informatica.Por lo expuesto le exhortamos a realizar la cancelación de deuda según se indica, teniendo como plazo máximo el día ';
+        //const mensajeAntesFecha = 'Previo cordial saludo, le informamos que mantiene deuda pendiente de pago a la Unidad de Posgrado de la Facultad de Ingeniería de Sistemas e Informatica.Por lo expuesto le exhortamos a realizar la cancelación de deuda según se indica, teniendo como plazo máximo el día ';
+        const mensajeAntesFecha = 'Previo cordial saludo, le informamos que mantiene deuda pendiente de pago a la Unidad de Posgrado de la Facultad de Ingeniería de Sistemas e Informatica. según se detalla: ';
         let fecha = "--Fecha--";
         fecha=this.sumarDias(aumentarDias);
-        const mensajePostFecha=' pasado el plazo indicado se procederá a informar a las dependencias pertinentes con fines de cobranza.\n\n'
-        const body = mensajeAntesFecha+fecha+mensajePostFecha;
+        //const mensajePostFecha=' pasado el plazo indicado se procederá a informar a las dependencias pertinentes con fines de cobranza.\n\n'
+        const mensajePostFecha=' Por la emergencia sanitaria puede realizar sus pagos en la cuenta BCP de la UNMSM Cta. Cte. N° 191-0215772014 / CCI N° 002-191-00021577201451 mediante transferencia bancaria, interbancaria, depósitos en ventanilla, cajero, o agente. En el voucher debe reflejar su dni, código de estudiante. Los pagos errados son de entera responsabilidad del estudiante. Asimismo puede continuar realizando sus pagos en agencia (ventanilla, no agente) del Banco Pichincha al número de cuenta UNMSM: 270016684 y conceptos según corresponda, al acercarse a la ventanilla del banco, brinde su código de estudiante del programa que estudia, antes de retirarse de la ventanilla revise su voucher. Los pagos a conceptos errados son de entera responsabilidad del estudiante.'
+        //const body = mensajeAntesFecha+fecha+mensajePostFecha;
+        const body = mensajeAntesFecha+mensajePostFecha;
 
         this.setState({
             descripcionEnvio:body,
@@ -65,14 +70,17 @@ class ListaCuentasPorCobrar2 extends Component{
 
       mostrarAgregarDias = (dias) => {
         
-        const mensajeAntesFecha = 'Previo cordial saludo, le informamos que mantiene deuda pendiente de pago a la Unidad de Posgrado de la Facultad de Ingeniería de Sistemas e Informatica.Por lo expuesto le exhortamos a realizar la cancelación de deuda según se indica, teniendo como plazo máximo el día ';
+        //const mensajeAntesFecha = 'Previo cordial saludo, le informamos que mantiene deuda pendiente de pago a la Unidad de Posgrado de la Facultad de Ingeniería de Sistemas e Informatica.Por lo expuesto le exhortamos a realizar la cancelación de deuda según se indica, teniendo como plazo máximo el día ';
+        const mensajeAntesFecha = 'Previo cordial saludo, le informamos que mantiene deuda pendiente de pago a la Unidad de Posgrado de la Facultad de Ingeniería de Sistemas e Informatica. según se detalla: ';
         let fecha = "--Fecha--";
         fecha=this.sumarDias(dias);
         
-        const mensajePostFecha=' pasado el plazo indicado se procederá a informar a las dependencias pertinentes con fines de cobranza.\n\n'
-        const body = mensajeAntesFecha+fecha+mensajePostFecha;
+        //const mensajePostFecha=' pasado el plazo indicado se procederá a informar a las dependencias pertinentes con fines de cobranza.\n\n'
 
-        
+        const mensajePostFecha=' Por la emergencia sanitaria puede realizar sus pagos en la cuenta BCP de la UNMSM Cta. Cte. N° 191-0215772014 / CCI N° 002-191-00021577201451 mediante transferencia bancaria, interbancaria, depósitos en ventanilla, cajero, o agente. En el voucher debe reflejar su dni, código de estudiante. Los pagos errados son de entera responsabilidad del estudiante. Asimismo puede continuar realizando sus pagos en agencia (ventanilla, no agente) del Banco Pichincha al número de cuenta UNMSM: 270016684 y conceptos según corresponda, al acercarse a la ventanilla del banco, brinde su código de estudiante del programa que estudia, antes de retirarse de la ventanilla revise su voucher. Los pagos a conceptos errados son de entera responsabilidad del estudiante.'
+
+        //const body = mensajeAntesFecha+fecha+mensajePostFecha;
+        const body = mensajeAntesFecha+mensajePostFecha;        
 
         this.setState({
             descripcionEnvio:body,
